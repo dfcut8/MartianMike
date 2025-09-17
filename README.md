@@ -146,11 +146,23 @@ Tests are executed by running the Godot test project in `MartianMike` from the c
 
 A spell check runs on every push to the repository. The spellcheck workflow settings can be configured in [`.github/workflows/spellcheck.yaml`](.github/workflows/spellcheck.yaml).
 
-The [Code Spell Checker][cspell] plugin for VSCode is recommended to help you catch typos before you commit them. If you need add a word to the dictionary or ignore a certain path, you can edit the project's `cspell.json` file.
+The [Code Spell Checker][cspell] plugin for VSCode is recommended to help you catch typos before you commit them. If you need to add a word to the dictionary or ignore a certain path, you can edit the project's `cspell.json` file.
 
-You can also words to the local `cspell.json` file from VSCode by hovering over a misspelled word and selecting `Quick Fix...` and then `Add "{word}" to config: cspell.json`.
+You can also add words to the local `cspell.json` file from VSCode by hovering over a misspelled word and selecting `Quick Fix...` and then `Add "{word}" to config: cspell.json`.
 
 ![Fix Spelling](docs/spelling_fix.png)
+
+If you'd like to add project-specific words (product names, acronyms, or unusual file extensions), add them to `.cspell/custom-words.txt` (one word per line). The repository's `cspell.json` already registers that file as a dictionary.
+
+To run the spellchecker locally (node/npm required):
+
+```sh
+# Optional: install cspell globally
+npm install -g cspell
+
+# Run cspell against the repo using the project config
+cspell --config cspell.json "**/*.*"
+```
 
 ### 🗂 Version Change
 

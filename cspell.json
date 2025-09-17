@@ -92,5 +92,14 @@
     "vulkan",
     "XRIP",
     "Xunit"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "project-words",
+      "path": ".cspell/custom-words.txt"
+    }
+  ],
+  "dictionaries": [
+    "project-words"
   ]
 }
