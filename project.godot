@@ -36,7 +36,3 @@ naming/scene_name_casing=1
 theme/default_font_multichannel_signed_distance_field=true
 theme/default_font_generate_mipmaps=true
 theme/default_theme_scale=2.0
-
-[rendering]
-
-renderer/rendering_method="mobile"
