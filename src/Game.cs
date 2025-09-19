@@ -2,7 +2,8 @@ namespace MartianMike;
 
 using Godot;
 
-public partial class Game : Control {
+public partial class Game : Control
+{
     public Button TestButton { get; private set; } = default!;
     public int ButtonPresses { get; private set; }
 
@@ -10,4 +11,4 @@ public partial class Game : Control {
       => TestButton = GetNode<Button>("%TestButton");
 
     public void OnTestButtonPressed() => ButtonPresses++;
-    }
+}
