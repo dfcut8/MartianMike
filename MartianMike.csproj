@@ -12,15 +12,13 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <!-- To show generated files -->
     <!-- <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles> -->
-    <!--
-      <CompilerGeneratedFilesOutputPath>.generated</CompilerGeneratedFilesOutputPath>
-    -->
+    <CompilerGeneratedFilesOutputPath>.generated</CompilerGeneratedFilesOutputPath>
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <Title>MartianMike</Title>
     <Version>1.0.0</Version>
     <Description>MartianMike</Description>
-    <Copyright>© 2024 dfcut8</Copyright>
+    <Copyright>© 2025 dfcut8</Copyright>
     <Authors>dfcut8</Authors>
     <Company>dfcut8</Company>
 
@@ -46,6 +44,10 @@
     <PackageReference Include="LightMock.Generator" Version="1.2.3" />
     <!-- LightMoq is a Chickensoft package which makes it more like Moq. -->
     <PackageReference Include="LightMoq" Version="0.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include=".editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
