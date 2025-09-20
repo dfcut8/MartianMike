@@ -2,7 +2,7 @@ namespace MartianMike;
 
 using Godot;
 
-public partial class Game : Control
+public partial class Game : Node2D
 {
     public Button StartButton { get; private set; } = default!;
     public int ButtonPresses { get; private set; }
