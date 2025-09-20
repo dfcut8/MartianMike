@@ -23,10 +23,4 @@ public partial class Main : Control
     {
         GetTree().ChangeSceneToFile("Levels/Level1.tscn");
     }
-
-    protected override void Dispose(bool disposing)
-    {
-        startButton.Pressed -= OnStartButtonPressed;
-        exitButton.Pressed -= OnExitButtonPressed;
-    }
 }
