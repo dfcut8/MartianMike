@@ -27,7 +27,7 @@ public class GameTest : TestClass
     [Test]
     public void TestButtonUpdatesCounter()
     {
-        var buttonDriver = new ButtonDriver(() => _game.TestButton);
+        var buttonDriver = new ButtonDriver(() => _game.StartButton);
         buttonDriver.ClickCenter();
         _game.ButtonPresses.ShouldBe(1);
     }
