@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://djgpdtw4sacrl"]
+[gd_scene load_steps=2 format=3 uid="uid://djgpdtw4sacrl"]
+
+[ext_resource type="Script" uid="uid://chc140s054h1h" path="res://Main.cs" id="1_glv2v"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -7,8 +9,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_glv2v")
 
 [node name="Center" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -31.5
+offset_right = 72.0
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Center"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -33.0
+offset_right = 28.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="Center/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "START"
+
+[node name="Exit" type="Button" parent="Center/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "EXIT"
