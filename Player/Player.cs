@@ -6,10 +6,20 @@ public partial class Player : CharacterBody2D
     [Export] private int speed = 150;
     [Export] private int jumpVelocity = -200;
     private AnimatedSprite2D animatedSprite2D;
+    private Area2D deathZone;
 
     public override void _Ready()
     {
         animatedSprite2D = GetNode<AnimatedSprite2D>("%AnimatedSprite2D");
+        deathZone = GetNode<Area2D>("%DeathZone");
+        deathZone.BodyEntered += body =>
+        {
+            if (body is Player)
+            {
+                // TODO: Update to handle lives and game over screen
+                GetTree().ReloadCurrentScene();
+            }
+        };
     }
 
     public override void _PhysicsProcess(double delta)

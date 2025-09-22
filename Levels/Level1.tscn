@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b77rxw8bub2xm"]
+[gd_scene load_steps=6 format=3 uid="uid://b77rxw8bub2xm"]
 
 [ext_resource type="PackedScene" uid="uid://brlgn6i8c78mg" path="res://Core/GameManager.tscn" id="1_3anf8"]
 [ext_resource type="PackedScene" uid="uid://y7k4jmf7nwi6" path="res://Player/Player.tscn" id="3_fhqol"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhqol"]
 size = Vector2(266, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iotdp"]
+size = Vector2(499, 20)
 
 [node name="Level" type="Node2D"]
 
@@ -28,3 +31,12 @@ region_rect = Rect2(1.0007324, 1.4607887, 14.93469, 6.2361393)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(15, 0)
 shape = SubResource("RectangleShape2D_fhqol")
+
+[node name="DeathZone" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(193, 200)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_iotdp")
