@@ -44,7 +44,7 @@ public partial class Player : CharacterBody2D
             animatedSprite2D.Play("idle");
         }
 
-        if (Input.IsActionJustPressed("player_jump"))
+        if (Input.IsActionJustPressed("player_jump") && IsOnFloor())
         {
             v.Y = jumpVelocity;
             animatedSprite2D.Play("jump");
