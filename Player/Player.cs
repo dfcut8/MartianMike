@@ -32,27 +32,15 @@ public partial class Player : CharacterBody2D
 
     private void HandlePlayerInputs(ref Vector2 v)
     {
-        if (Input.IsActionPressed("ui_right"))
+        var direction = Input.GetAxis("player_left", "player_right") * speed;
+        v.X = direction;
+        if (direction != 0)
         {
-            v.X = speed;
-            if (IsOnFloor())
-            {
-                animatedSprite2D.Play("run");
-            }
-            animatedSprite2D.FlipH = false;
+            animatedSprite2D.Play("run");
+            animatedSprite2D.FlipH = direction < 0;
         }
-        else if (Input.IsActionPressed("player_left"))
+        else if (IsOnFloor())
         {
-            v.X = -speed;
-            if (IsOnFloor())
-            {
-                animatedSprite2D.Play("run");
-            }
-            animatedSprite2D.FlipH = true;
-        }
-        else
-        {
-            v.X = 0;
             animatedSprite2D.Play("idle");
         }
 
