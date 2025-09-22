@@ -25,7 +25,6 @@ public partial class Player : CharacterBody2D
     {
         if (!IsOnFloor())
         {
-            animatedSprite2D.Play("fall");
             v.Y += gravity * (float)delta;
         }
     }
@@ -36,7 +35,10 @@ public partial class Player : CharacterBody2D
         v.X = direction;
         if (direction != 0)
         {
-            animatedSprite2D.Play("run");
+            if (IsOnFloor())
+            {
+                animatedSprite2D.Play("run");
+            }
             animatedSprite2D.FlipH = direction < 0;
         }
         else if (IsOnFloor())
@@ -47,6 +49,15 @@ public partial class Player : CharacterBody2D
         if (Input.IsActionJustPressed("player_jump") && IsOnFloor())
         {
             v.Y = jumpVelocity;
+            animatedSprite2D.Play("jump");
+        }
+
+        if (!IsOnFloor() && v.Y > 0)
+        {
+            animatedSprite2D.Play("fall");
+        }
+        else if (IsOnFloor() && v.Y < 0)
+        {
             animatedSprite2D.Play("jump");
         }
     }
