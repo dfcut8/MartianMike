@@ -31,6 +31,12 @@ public partial class Player : CharacterBody2D
 
     private void HandlePlayerInputs(ref Vector2 v)
     {
+        if (Input.IsActionJustPressed("player_jump") && IsOnFloor())
+        {
+            v.Y = jumpVelocity;
+            animatedSprite2D.Play("jump");
+        }
+
         var direction = Input.GetAxis("player_left", "player_right") * speed;
         v.X = direction;
         if (direction != 0)
@@ -44,12 +50,6 @@ public partial class Player : CharacterBody2D
         else if (IsOnFloor())
         {
             animatedSprite2D.Play("idle");
-        }
-
-        if (Input.IsActionJustPressed("player_jump") && IsOnFloor())
-        {
-            v.Y = jumpVelocity;
-            animatedSprite2D.Play("jump");
         }
 
         if (!IsOnFloor() && v.Y > 0)
