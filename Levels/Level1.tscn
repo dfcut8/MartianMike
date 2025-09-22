@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b77rxw8bub2xm"]
+[gd_scene load_steps=4 format=3 uid="uid://b77rxw8bub2xm"]
 
 [ext_resource type="PackedScene" uid="uid://brlgn6i8c78mg" path="res://Core/GameManager.tscn" id="1_3anf8"]
 [ext_resource type="Script" uid="uid://ci78ki3e2dlpa" path="res://Core/GameManager.cs" id="2_fhqol"]
+[ext_resource type="PackedScene" uid="uid://y7k4jmf7nwi6" path="res://Player/Player.tscn" id="3_fhqol"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_3anf8")]
 script = ExtResource("2_fhqol")
+
+[node name="Player" parent="." instance=ExtResource("3_fhqol")]
+position = Vector2(78, 71)

@@ -1,3 +1,3 @@
 [gd_scene format=3 uid="uid://brlgn6i8c78mg"]
 
-[node name="LevelController" type="Node"]
+[node name="GameManager" type="Node"]
