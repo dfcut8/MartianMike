@@ -2,6 +2,7 @@ using Godot;
 
 public partial class Player : CharacterBody2D
 {
+    [Export] private int gravity = 400;
     private AnimatedSprite2D animatedSprite2D;
 
     public override void _Ready()
@@ -10,6 +11,23 @@ public partial class Player : CharacterBody2D
     }
 
     public override void _PhysicsProcess(double delta)
+    {
+        HandlePlayerInputs();
+        AddGravity(delta);
+        MoveAndSlide();
+    }
+
+    private void AddGravity(double delta)
+    {
+        var velocity = Velocity;
+        if (!IsOnFloor())
+        {
+            velocity.Y += gravity * (float)delta;
+            Velocity = velocity;
+        }
+    }
+
+    private void HandlePlayerInputs()
     {
         if (Input.IsActionPressed("ui_right"))
         {
