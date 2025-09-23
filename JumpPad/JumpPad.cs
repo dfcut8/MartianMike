@@ -9,12 +9,6 @@ public partial class JumpPad : Area2D
     {
         animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         BodyEntered += OnBodyEntered;
-        BodyExited += OnBodyExited;
-    }
-
-    private void OnBodyExited(Node2D body)
-    {
-        animatedSprite2D.Play("idle");
     }
 
     private void OnBodyEntered(Node2D body)
