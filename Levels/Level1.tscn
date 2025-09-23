@@ -40,3 +40,7 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
 position = Vector2(-16.5, 0)
 shape = SubResource("RectangleShape2D_iotdp")
+
+[node name="PlayerRespawn" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(214, 94)
