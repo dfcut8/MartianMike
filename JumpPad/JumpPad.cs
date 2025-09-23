@@ -2,6 +2,7 @@ using Godot;
 
 public partial class JumpPad : Area2D
 {
+    [Export] private int jumpPadVelocity = -400;
     private AnimatedSprite2D animatedSprite2D;
 
     public override void _Ready()
@@ -21,7 +22,7 @@ public partial class JumpPad : Area2D
         if (body is Player)
         {
             animatedSprite2D.Play("jump");
-            (body as Player).Jump();
+            (body as Player).Jump(jumpPadVelocity);
         }
     }
 }

@@ -22,20 +22,50 @@ public partial class Player : CharacterBody2D
         MoveAndSlide();
     }
 
-    // TODO: Make jump velocity injectable.
+    /// <summary>
+    /// <para>Makes the player character jump using the default jump velocity. Updates the vertical velocity and plays the jump animation.</para>
+    /// </summary>
     public void Jump()
     {
         var velocity = Velocity;
         Jump(ref velocity);
     }
 
-    public void Jump(ref Vector2 velocity)
+    /// <summary>
+    /// Makes the player character jump using a custom jump velocity.
+    /// Updates the vertical velocity and plays the jump animation.
+    /// </summary>
+    /// <param name="customJumpVelocity">The custom vertical velocity to apply for the jump.</param>
+    public void Jump(int customJumpVelocity)
+    {
+        var velocity = Velocity;
+        Jump(ref velocity, customJumpVelocity);
+    }
+
+    private void Jump(ref Vector2 velocity)
     {
         velocity.Y = jumpVelocity;
         animatedSprite2D.Play("jump");
         Velocity = velocity;
     }
 
+    /// <summary>
+    /// Sets the vertical velocity to a custom jump velocity and plays the jump animation.
+    /// </summary>
+    /// <param name="velocity">Reference to the velocity vector to modify.</param>
+    /// <param name="customJumpVelocity">The custom vertical velocity to apply for the jump.</param>
+    private void Jump(ref Vector2 velocity, int customJumpVelocity)
+    {
+        velocity.Y = customJumpVelocity;
+        animatedSprite2D.Play("jump");
+        Velocity = velocity;
+    }
+
+    /// <summary>
+    /// Applies gravity to the player's vertical velocity if not on the floor.
+    /// </summary>
+    /// <param name="delta">The frame's time step.</param>
+    /// <param name="v">Reference to the velocity vector to modify.</param>
     private void AddGravity(double delta, ref Vector2 v)
     {
         if (!IsOnFloor())
@@ -44,6 +74,10 @@ public partial class Player : CharacterBody2D
         }
     }
 
+    /// <summary>
+    /// Handles player input for movement and jumping, and updates animation states accordingly.
+    /// </summary>
+    /// <param name="v">Reference to the velocity vector to modify.</param>
     private void HandlePlayerInputs(ref Vector2 v)
     {
         var velocity = Velocity;
