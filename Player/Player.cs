@@ -22,6 +22,20 @@ public partial class Player : CharacterBody2D
         MoveAndSlide();
     }
 
+    // TODO: Make jump velocity injectable.
+    public void Jump()
+    {
+        var velocity = Velocity;
+        Jump(ref velocity);
+    }
+
+    public void Jump(ref Vector2 velocity)
+    {
+        velocity.Y = jumpVelocity;
+        animatedSprite2D.Play("jump");
+        Velocity = velocity;
+    }
+
     private void AddGravity(double delta, ref Vector2 v)
     {
         if (!IsOnFloor())
@@ -32,10 +46,10 @@ public partial class Player : CharacterBody2D
 
     private void HandlePlayerInputs(ref Vector2 v)
     {
+        var velocity = Velocity;
         if (Input.IsActionJustPressed("player_jump") && IsOnFloor())
         {
-            v.Y = jumpVelocity;
-            animatedSprite2D.Play("jump");
+            Jump(ref v);
         }
 
         var direction = Input.GetAxis("player_left", "player_right") * speed;
