@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b77rxw8bub2xm"]
+[gd_scene load_steps=8 format=3 uid="uid://b77rxw8bub2xm"]
 
 [ext_resource type="PackedScene" uid="uid://brlgn6i8c78mg" path="res://Core/GameManager.tscn" id="1_3anf8"]
 [ext_resource type="PackedScene" uid="uid://y7k4jmf7nwi6" path="res://Player/Player.tscn" id="3_fhqol"]
 [ext_resource type="Texture2D" uid="uid://bh5ukk8lm3dn4" path="res://assets/textures/Terrain (16x16).png" id="3_iotdp"]
 [ext_resource type="PackedScene" uid="uid://ciqdi55sqykbu" path="res://JumpPad/JumpPad.tscn" id="4_iotdp"]
+[ext_resource type="PackedScene" uid="uid://p83o2uvq00tk" path="res://Traps/Saw.tscn" id="5_nutv8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhqol"]
 size = Vector2(266, 36)
@@ -16,6 +17,7 @@ size = Vector2(499, 20)
 [node name="GameManager" parent="." instance=ExtResource("1_3anf8")]
 
 [node name="Player" parent="." instance=ExtResource("3_fhqol")]
+unique_name_in_owner = true
 position = Vector2(78, 71)
 
 [node name="Ground" type="StaticBody2D" parent="."]
@@ -44,7 +46,12 @@ shape = SubResource("RectangleShape2D_iotdp")
 
 [node name="PlayerRespawn" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(214, 94)
+position = Vector2(57, 108)
 
 [node name="JumpPad" parent="." instance=ExtResource("4_iotdp")]
 position = Vector2(178, 138)
+
+[node name="Traps" type="Node" parent="."]
+
+[node name="Saw" parent="Traps" instance=ExtResource("5_nutv8")]
+position = Vector2(237, 132)

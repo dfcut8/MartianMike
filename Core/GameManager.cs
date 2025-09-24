@@ -1,20 +1,27 @@
 using Godot;
+using MartianMike.Core;
 
 public partial class GameManager : Node
 {
     private Marker2D playerRespawn;
     private Area2D deathZone;
+    private Player player;
 
     public override void _Ready()
     {
+        player = GetNode<Player>("%Player");
         playerRespawn = GetNode<Marker2D>("%PlayerRespawn");
         deathZone = GetNode<Area2D>("%DeathZone");
         deathZone.BodyEntered += body =>
         {
             if (body is Player)
             {
-                body.Position = playerRespawn.Position;
+                player.Position = playerRespawn.Position;
             }
+        };
+        GlobalEvents.TrapTriggered += () =>
+        {
+            player.Position = playerRespawn.Position;
         };
     }
 
