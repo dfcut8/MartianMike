@@ -9,6 +9,7 @@ public partial class GameManager : Node
 
     public override void _Ready()
     {
+        GD.Print("GameManager ready.");
         player = GetNode<Player>("%Player");
         playerRespawn = GetNode<Marker2D>("%PlayerRespawn");
         deathZone = GetNode<Area2D>("%DeathZone");
@@ -19,10 +20,7 @@ public partial class GameManager : Node
                 player.Position = playerRespawn.Position;
             }
         };
-        GlobalEvents.TrapTriggered += () =>
-        {
-            player.Position = playerRespawn.Position;
-        };
+        GlobalEvents.TrapTriggered += OnTrapTriggered;
     }
 
     public override void _Process(double delta)
@@ -37,5 +35,15 @@ public partial class GameManager : Node
             GD.Print("Quitting the game...");
             GetTree().Quit();
         }
+    }
+
+    private void OnTrapTriggered()
+    {
+        player.Position = playerRespawn.Position;
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        GlobalEvents.TrapTriggered -= OnTrapTriggered;
     }
 }

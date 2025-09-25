@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn0etfp3nggje"]
+
+[ext_resource type="Script" uid="uid://bm4l4njxoh3il" path="res://Traps/Trap.cs" id="1_thcn3"]
+[ext_resource type="Texture2D" uid="uid://pnkbp1t804wx" path="res://assets/textures/other/Spiked Ball.png" id="2_thcn3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i7dm1"]
+radius = 16.0
+
+[node name="SpikeBBall" type="Node2D"]
+script = ExtResource("1_thcn3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_thcn3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_i7dm1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
