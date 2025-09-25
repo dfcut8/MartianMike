@@ -1,9 +1,8 @@
 using System;
 
-namespace MartianMike.Core
+namespace MartianMike.Core;
+
+internal static class GlobalEvents
 {
-    internal static class GlobalEvents
-    {
-        public static Action TrapTriggered;
-    }
+    public static Action TrapTriggered;
 }

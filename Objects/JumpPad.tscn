@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://ciqdi55sqykbu"]
 
-[ext_resource type="Script" uid="uid://crxq65s6btdv1" path="res://JumpPad/JumpPad.cs" id="1_avdue"]
+[ext_resource type="Script" uid="uid://crxq65s6btdv1" path="res://Objects/JumpPad.cs" id="1_avdue"]
 [ext_resource type="Texture2D" uid="uid://daqtl51b2hoki" path="res://assets/textures/other/Idle.png" id="1_b3x6y"]
 [ext_resource type="Texture2D" uid="uid://dkbxlsmtkltm4" path="res://assets/textures/other/Jump (28x28).png" id="2_avdue"]
 

@@ -1,5 +1,7 @@
 using Godot;
 
+namespace MartianMike.Actors;
+
 public partial class Player : CharacterBody2D
 {
     [Export] private int gravity = 400;

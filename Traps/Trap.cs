@@ -1,5 +1,8 @@
 using Godot;
+using MartianMike.Actors;
 using MartianMike.Core;
+
+namespace MartianMike.Traps;
 
 public partial class Trap : Node2D
 {

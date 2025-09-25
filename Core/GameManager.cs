@@ -1,5 +1,7 @@
 using Godot;
-using MartianMike.Core;
+using MartianMike.Actors;
+
+namespace MartianMike.Core;
 
 public partial class GameManager : Node
 {
