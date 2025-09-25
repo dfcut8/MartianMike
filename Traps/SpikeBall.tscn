@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://pnkbp1t804wx" path="res://assets/textures/other/Spiked Ball.png" id="2_thcn3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i7dm1"]
-radius = 16.0
+radius = 12.0
 
 [node name="SpikeBBall" type="Node2D"]
 script = ExtResource("1_thcn3")
