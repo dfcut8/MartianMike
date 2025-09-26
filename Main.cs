@@ -21,6 +21,6 @@ public partial class Main : Control
 
     private void OnStartButtonPressed()
     {
-        GetTree().ChangeSceneToFile("Levels/Level1.tscn");
+        GetTree().ChangeSceneToFile("Levels/Level1/Level1.tscn");
     }
 }
