@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b77rxw8bub2xm"]
+[gd_scene load_steps=9 format=3 uid="uid://b77rxw8bub2xm"]
 
 [ext_resource type="PackedScene" uid="uid://b75p6mpxhbrrq" path="res://Core/GameManager.tscn" id="1_a1y0i"]
 [ext_resource type="PackedScene" uid="uid://y7k4jmf7nwi6" path="res://Actors/Player.tscn" id="2_renp8"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://p83o2uvq00tk" path="res://Traps/Saw.tscn" id="4_7ouqh"]
 [ext_resource type="PackedScene" uid="uid://cn0etfp3nggje" path="res://Traps/SpikeBall.tscn" id="5_e1uqi"]
 [ext_resource type="PackedScene" uid="uid://ciqdi55sqykbu" path="res://Objects/JumpPad.tscn" id="6_4ipag"]
-[ext_resource type="PackedScene" uid="uid://bp2snfsp07wou" path="res://Levels/Level1/Level1TileMap.tscn" id="7_umoym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhqol"]
 size = Vector2(266, 36)
@@ -66,5 +65,3 @@ position = Vector2(178, 138)
 
 [node name="JumpPad2" parent="Objects" instance=ExtResource("6_4ipag")]
 position = Vector2(229, 137)
-
-[node name="TileMap" parent="Objects" instance=ExtResource("7_umoym")]
