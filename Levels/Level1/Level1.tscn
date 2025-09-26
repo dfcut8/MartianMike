@@ -1,17 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://b77rxw8bub2xm"]
+[gd_scene load_steps=8 format=4 uid="uid://b77rxw8bub2xm"]
 
 [ext_resource type="PackedScene" uid="uid://b75p6mpxhbrrq" path="res://Core/GameManager.tscn" id="1_a1y0i"]
 [ext_resource type="PackedScene" uid="uid://y7k4jmf7nwi6" path="res://Actors/Player.tscn" id="2_renp8"]
-[ext_resource type="Texture2D" uid="uid://bh5ukk8lm3dn4" path="res://assets/textures/Terrain (16x16).png" id="3_b1g7e"]
 [ext_resource type="PackedScene" uid="uid://p83o2uvq00tk" path="res://Traps/Saw.tscn" id="4_7ouqh"]
 [ext_resource type="PackedScene" uid="uid://cn0etfp3nggje" path="res://Traps/SpikeBall.tscn" id="5_e1uqi"]
 [ext_resource type="PackedScene" uid="uid://ciqdi55sqykbu" path="res://Objects/JumpPad.tscn" id="6_4ipag"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhqol"]
-size = Vector2(266, 36)
+[ext_resource type="PackedScene" uid="uid://bjvf0omexlghy" path="res://Levels/TileMaps/BasicTerrainTileMap.tscn" id="6_olbyf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iotdp"]
-size = Vector2(499, 20)
+size = Vector2(1173, 20)
 
 [node name="Level" type="Node2D"]
 
@@ -19,23 +16,7 @@ size = Vector2(499, 20)
 
 [node name="Player" parent="." instance=ExtResource("2_renp8")]
 unique_name_in_owner = true
-position = Vector2(78, 71)
-
-[node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(122, 170)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground"]
-texture_repeat = 2
-position = Vector2(15.166666, 0)
-scale = Vector2(36.21619, 5.833333)
-texture = ExtResource("3_b1g7e")
-region_enabled = true
-region_rect = Rect2(1.0007324, 1.4607887, 14.93469, 6.2361393)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-position = Vector2(15, 0)
-scale = Vector2(2.0400023, 1)
-shape = SubResource("RectangleShape2D_fhqol")
+position = Vector2(57, 120)
 
 [node name="DeathZone" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -43,7 +24,7 @@ position = Vector2(193, 200)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(-16.5, 0)
+position = Vector2(-15.5, 0)
 shape = SubResource("RectangleShape2D_iotdp")
 
 [node name="PlayerRespawn" type="Marker2D" parent="."]
@@ -53,15 +34,18 @@ position = Vector2(57, 108)
 [node name="Traps" type="Node" parent="."]
 
 [node name="Saw" parent="Traps" instance=ExtResource("4_7ouqh")]
-position = Vector2(324, 130)
+position = Vector2(325, 140)
 
 [node name="SpikeBBall" parent="Traps" instance=ExtResource("5_e1uqi")]
-position = Vector2(-68, 136)
+position = Vector2(-67, 146)
 
 [node name="Objects" type="Node" parent="."]
 
 [node name="JumpPad" parent="Objects" instance=ExtResource("6_4ipag")]
-position = Vector2(178, 138)
+position = Vector2(179, 146)
 
 [node name="JumpPad2" parent="Objects" instance=ExtResource("6_4ipag")]
-position = Vector2(229, 137)
+position = Vector2(229, 146)
+
+[node name="BasicTerrainTileMap" parent="." instance=ExtResource("6_olbyf")]
+tile_map_data = PackedByteArray("AAD4/woAAAAGAAAAAAD4/wsAAAAGAAEAAAD4/wwAAAAGAAIAAAD5/woAAAAHAAAAAAD5/wsAAAAHAAEAAAD5/wwAAAAHAAIAAAD6/woAAAAHAAAAAAD6/wsAAAAHAAEAAAD6/wwAAAAHAAIAAAD7/woAAAAHAAAAAAD7/wsAAAAHAAEAAAD7/wwAAAAHAAIAAAD8/woAAAAHAAAAAAD8/wsAAAAHAAEAAAD8/wwAAAAHAAIAAAD9/woAAAAHAAAAAAD9/wsAAAAHAAEAAAD9/wwAAAAHAAIAAAD+/woAAAAHAAAAAAD+/wsAAAAHAAEAAAD+/wwAAAAHAAIAAAD//woAAAAHAAAAAAD//wsAAAAHAAEAAAD//wwAAAAHAAIAAAAAAAoAAAAHAAAAAAAAAAsAAAAHAAEAAAAAAAwAAAAHAAIAAAABAAoAAAAHAAAAAAABAAsAAAAHAAEAAAABAAwAAAAHAAIAAAACAAoAAAAHAAAAAAACAAsAAAAHAAEAAAACAAwAAAAHAAIAAAADAAoAAAAHAAAAAAADAAsAAAAHAAEAAAADAAwAAAAHAAIAAAAEAAoAAAAHAAAAAAAEAAsAAAAHAAEAAAAEAAwAAAAHAAIAAAAFAAoAAAAHAAAAAAAFAAsAAAAHAAEAAAAFAAwAAAAHAAIAAAAGAAoAAAAHAAAAAAAGAAsAAAAHAAEAAAAGAAwAAAAHAAIAAAAHAAoAAAAHAAAAAAAHAAsAAAAHAAEAAAAHAAwAAAAHAAIAAAAIAAoAAAAHAAAAAAAIAAsAAAAHAAEAAAAIAAwAAAAHAAIAAAAJAAoAAAAHAAAAAAAJAAsAAAAHAAEAAAAJAAwAAAAHAAIAAAAKAAoAAAAHAAAAAAAKAAsAAAAHAAEAAAAKAAwAAAAHAAIAAAALAAoAAAAHAAAAAAALAAsAAAAHAAEAAAALAAwAAAAHAAIAAAAMAAoAAAAHAAAAAAAMAAsAAAAHAAEAAAAMAAwAAAAHAAIAAAANAAoAAAAHAAAAAAANAAsAAAAHAAEAAAANAAwAAAAHAAIAAAAOAAoAAAAHAAAAAAAOAAsAAAAHAAEAAAAOAAwAAAAHAAIAAAAPAAoAAAAHAAAAAAAPAAsAAAAHAAEAAAAPAAwAAAAHAAIAAAAQAAoAAAAHAAAAAAAQAAsAAAAHAAEAAAAQAAwAAAAHAAIAAAARAAoAAAAHAAAAAAARAAsAAAAHAAEAAAARAAwAAAAHAAIAAAASAAoAAAAHAAAAAAASAAsAAAAHAAEAAAASAAwAAAAHAAIAAAATAAoAAAAHAAAAAAATAAsAAAAHAAEAAAATAAwAAAAHAAIAAAAUAAoAAAAHAAAAAAAUAAsAAAAHAAEAAAAUAAwAAAAHAAIAAAAVAAoAAAAHAAAAAAAVAAsAAAAHAAEAAAAVAAwAAAAHAAIAAAAWAAoAAAAHAAAAAAAWAAsAAAAHAAEAAAAWAAwAAAAHAAIAAAAXAAoAAAAHAAAAAAAXAAsAAAAHAAEAAAAXAAwAAAAHAAIAAAAYAAoAAAAHAAAAAAAYAAsAAAAHAAEAAAAYAAwAAAAHAAIAAAAZAAoAAAAIAAAAAAAZAAsAAAAIAAEAAAAZAAwAAAAIAAIAAAA=")
