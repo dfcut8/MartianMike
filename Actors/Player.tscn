@@ -216,3 +216,6 @@ autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -8)
+limit_left = -100
+limit_bottom = 200
+editor_draw_limits = true
