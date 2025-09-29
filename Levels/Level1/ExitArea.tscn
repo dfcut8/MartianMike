@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://bky8me0xqgdpo"]
+[gd_scene load_steps=15 format=3 uid="uid://bky8me0xqgdpo"]
 
+[ext_resource type="Script" uid="uid://6mgtod1ymjqq" path="res://Levels/Level1/ExitArea.cs" id="1_4sbfu"]
 [ext_resource type="Texture2D" uid="uid://c2foaokdsaprh" path="res://assets/textures/other/End (Idle).png" id="1_lcfdr"]
 [ext_resource type="Texture2D" uid="uid://dlqq0bm4sby2h" path="res://assets/textures/other/End (Pressed) (64x64).png" id="2_i6ir5"]
 
@@ -75,16 +76,29 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="ExitArea" type="Area2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4sbfu"]
+radius = 6.0827627
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sbfu"]
+size = Vector2(32, 8)
+
+[node name="ExitArea" type="Area2D"]
+script = ExtResource("1_4sbfu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_i6ir5")
-animation = &"pressed"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.35128462
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("CircleShape2D_4sbfu")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_4sbfu")
