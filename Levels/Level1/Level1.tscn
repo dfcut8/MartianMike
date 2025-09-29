@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://b77rxw8bub2xm"]
+[gd_scene load_steps=9 format=4 uid="uid://b77rxw8bub2xm"]
 
 [ext_resource type="PackedScene" uid="uid://b75p6mpxhbrrq" path="res://Core/GameManager.tscn" id="1_a1y0i"]
 [ext_resource type="PackedScene" uid="uid://y7k4jmf7nwi6" path="res://Actors/Player.tscn" id="2_renp8"]
@@ -6,11 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://cn0etfp3nggje" path="res://Traps/SpikeBall.tscn" id="5_e1uqi"]
 [ext_resource type="PackedScene" uid="uid://ciqdi55sqykbu" path="res://Objects/JumpPad.tscn" id="6_4ipag"]
 [ext_resource type="PackedScene" uid="uid://bjvf0omexlghy" path="res://Levels/TileMaps/BasicTerrainTileMap.tscn" id="6_olbyf"]
+[ext_resource type="PackedScene" uid="uid://c1wcg7by5j7yt" path="res://Levels/Level1/Background.tscn" id="7_a1y0i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iotdp"]
 size = Vector2(1481, 20)
 
 [node name="Level" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("7_a1y0i")]
 
 [node name="GameManager" parent="." instance=ExtResource("1_a1y0i")]
 
