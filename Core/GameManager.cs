@@ -6,7 +6,7 @@ namespace MartianMike.Core;
 
 public partial class GameManager : Node
 {
-    private Marker2D playerRespawn;
+    private StartArea startArea;
     private Area2D deathZone;
     private Player player;
 
@@ -14,16 +14,19 @@ public partial class GameManager : Node
     {
         GD.Print("GameManager ready.");
         player = GetNode<Player>("%Player");
-        playerRespawn = GetNode<Marker2D>("%PlayerRespawn");
+        startArea = GetNode<StartArea>("%StartArea");
         deathZone = GetNode<Area2D>("%DeathZone");
         deathZone.BodyEntered += body =>
         {
             if (body is Player)
             {
-                player.Position = playerRespawn.Position;
+                player.Position = startArea.GetSpawnPosition();
             }
         };
         GlobalEvents.TrapTriggered += OnTrapTriggered;
+
+        player.Position = startArea.GetSpawnPosition();
+        GD.Print("Player spawned at: " + player.Position);
     }
 
     public override void _Process(double delta)
@@ -42,7 +45,7 @@ public partial class GameManager : Node
 
     private void OnTrapTriggered()
     {
-        player.Position = playerRespawn.Position;
+        player.Position = startArea.GetSpawnPosition();
     }
 
     protected override void Dispose(bool disposing)

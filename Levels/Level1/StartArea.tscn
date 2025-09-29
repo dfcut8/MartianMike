@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://7hmjqdqsdfah"]
+[gd_scene load_steps=22 format=3 uid="uid://7hmjqdqsdfah"]
 
 [ext_resource type="Texture2D" uid="uid://cbfpb3gw4v3m4" path="res://assets/textures/other/Start.png" id="1_fho2i"]
+[ext_resource type="Script" uid="uid://okhk7y1qxclr" path="res://Levels/Level1/StartArea.cs" id="1_taevo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_taevo"]
 atlas = ExtResource("1_fho2i")
@@ -133,6 +134,7 @@ animations = [{
 size = Vector2(34, 6)
 
 [node name="StartArea" type="StaticBody2D"]
+script = ExtResource("1_taevo")
 
 [node name="SpawnMarker" type="Marker2D" parent="."]
 position = Vector2(8, -45)
@@ -141,7 +143,7 @@ position = Vector2(8, -45)
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_sfatd")
 autoplay = "default"
-frame_progress = 0.15138097
+frame_progress = 0.4953154
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(11, -4)
