@@ -10,7 +10,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build-without-tests",
-      "program": "${env:GODOT}",
+      "program": "C:\\Applications\\Godot4.Net\\Godot.exe",
       "args": [],
       "cwd": "${workspaceFolder}",
       "stopAtEntry": false,

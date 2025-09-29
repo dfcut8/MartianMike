@@ -6,7 +6,7 @@ namespace MartianMike.Core;
 
 public partial class GameManager : Node
 {
-    private StartArea startArea;
+    [Export] private StartArea startArea;
     private Area2D deathZone;
     private Player player;
 
@@ -14,7 +14,7 @@ public partial class GameManager : Node
     {
         GD.Print("GameManager ready.");
         player = GetNode<Player>("%Player");
-        startArea = GetNode<StartArea>("%StartArea");
+        // startArea = GetNode<StartArea>("%StartArea");
         deathZone = GetNode<Area2D>("%DeathZone");
         deathZone.BodyEntered += body =>
         {
@@ -25,8 +25,12 @@ public partial class GameManager : Node
         };
         GlobalEvents.TrapTriggered += OnTrapTriggered;
 
-        player.Position = startArea.GetSpawnPosition();
-        GD.Print("Player spawned at: " + player.Position);
+        // Need this because GameManager is another node and could be ready before StartArea
+        startArea.Ready += () =>
+        {
+            player.Position = startArea.GetSpawnPosition();
+            GD.Print("Player spawned at: " + player.Position);
+        };
     }
 
     public override void _Process(double delta)
