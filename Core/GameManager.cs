@@ -1,6 +1,7 @@
 using Godot;
 
 using MartianMike.Actors;
+using MartianMike.Objects;
 
 namespace MartianMike.Core;
 

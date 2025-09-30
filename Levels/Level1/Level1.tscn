@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://b77rxw8bub2xm"]
+[gd_scene load_steps=12 format=4 uid="uid://b77rxw8bub2xm"]
 
 [ext_resource type="PackedScene" uid="uid://b75p6mpxhbrrq" path="res://Core/GameManager.tscn" id="1_a1y0i"]
 [ext_resource type="PackedScene" uid="uid://y7k4jmf7nwi6" path="res://Actors/Player.tscn" id="2_renp8"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bjvf0omexlghy" path="res://Levels/TileMaps/BasicTerrainTileMap.tscn" id="6_olbyf"]
 [ext_resource type="PackedScene" uid="uid://c1wcg7by5j7yt" path="res://Objects/Background.tscn" id="7_a1y0i"]
 [ext_resource type="PackedScene" uid="uid://7hmjqdqsdfah" path="res://Objects/StartArea.tscn" id="8_renp8"]
+[ext_resource type="PackedScene" uid="uid://l7h8efx5m83k" path="res://Levels/Level2/Level2.tscn" id="9_7ouqh"]
 [ext_resource type="PackedScene" uid="uid://bky8me0xqgdpo" path="res://Objects/ExitArea.tscn" id="9_b1g7e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iotdp"]
@@ -54,6 +55,7 @@ position = Vector2(76, 161)
 
 [node name="ExitArea" parent="." instance=ExtResource("9_b1g7e")]
 position = Vector2(566, 160)
+NextLevel = ExtResource("9_7ouqh")
 
 [node name="Player" parent="." instance=ExtResource("2_renp8")]
 unique_name_in_owner = true

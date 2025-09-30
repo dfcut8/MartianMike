@@ -1,3 +1,6 @@
+using System;
+using System.Threading.Tasks;
+
 using Godot;
 
 using MartianMike.Actors;
@@ -6,6 +9,7 @@ namespace MartianMike.Objects;
 
 public partial class ExitArea : Area2D
 {
+    [Export] private PackedScene NextLevel;
     private AnimatedSprite2D animatedSprite2D;
     public override void _Ready()
     {
@@ -14,12 +18,22 @@ public partial class ExitArea : Area2D
         BodyEntered += OnBodyEntered;
     }
 
-    private void OnBodyEntered(Node body)
+    private async void OnBodyEntered(Node body)
     {
-        if (body is Player p)
+        if (body is not Player p)
         {
-            animatedSprite2D.Play("pressed");
-            p.IsActive = false;
+            return;
+        }
+        animatedSprite2D.Play("pressed");
+        p.IsActive = false;
+        await Task.Delay(TimeSpan.FromMilliseconds(1000));
+        if (NextLevel is not null)
+        {
+            GetTree().ChangeSceneToPacked(NextLevel);
+        }
+        else
+        {
+            GetTree().ChangeSceneToFile("GameOver");
         }
     }
 
