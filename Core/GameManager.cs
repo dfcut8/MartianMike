@@ -1,3 +1,6 @@
+using System;
+using System.Threading.Tasks;
+
 using Godot;
 
 using MartianMike.Actors;
@@ -12,15 +15,21 @@ public partial class GameManager : Node
     private Player player;
     private CanvasLayer gameOverScreen;
 
+    public override void _EnterTree()
+    {
+        gameOverScreen = GetNode<CanvasLayer>("%GameOverScreen");
+        gameOverScreen.Visible = false;
+        gameOverScreen.ProcessMode = ProcessModeEnum.Disabled;
+
+        GlobalEvents.TrapTriggered += OnTrapTriggered;
+        GlobalEvents.ExitAreaReached += OnExitAreaReached;
+    }
     public override void _Ready()
     {
         GD.Print("GameManager ready.");
         player = GetNode<Player>("%Player");
         // startArea = GetNode<StartArea>("%StartArea");
         deathZone = GetNode<Area2D>("%DeathZone");
-        gameOverScreen = GetNode<CanvasLayer>("%GameOverScreen");
-        gameOverScreen.Visible = false;
-        gameOverScreen.ProcessMode = ProcessModeEnum.Disabled;
         deathZone.BodyEntered += body =>
         {
             if (body is Player)
@@ -28,8 +37,6 @@ public partial class GameManager : Node
                 player.Position = startArea.GetSpawnPosition();
             }
         };
-        GlobalEvents.TrapTriggered += OnTrapTriggered;
-        GlobalEvents.ExitAreaReached += OnExitAreaReached;
 
         // Need this because GameManager is another node and could be ready before StartArea
         startArea.Ready += () =>
@@ -39,8 +46,10 @@ public partial class GameManager : Node
         };
     }
 
-    private void OnExitAreaReached(ExitArea exitArea)
+    private async void OnExitAreaReached(ExitArea exitArea)
     {
+        player.IsActive = false;
+        await Task.Delay(TimeSpan.FromMilliseconds(1000));
         if (exitArea.NextLevel is not null)
         {
             GetTree().ChangeSceneToPacked(exitArea.NextLevel);
@@ -75,5 +84,6 @@ public partial class GameManager : Node
     protected override void Dispose(bool disposing)
     {
         GlobalEvents.TrapTriggered -= OnTrapTriggered;
+        GlobalEvents.ExitAreaReached -= OnExitAreaReached;
     }
 }

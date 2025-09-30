@@ -1,6 +1,3 @@
-using System;
-using System.Threading.Tasks;
-
 using Godot;
 
 using MartianMike.Actors;
@@ -20,19 +17,13 @@ public partial class ExitArea : Area2D
         BodyEntered += OnBodyEntered;
     }
 
-    private async void OnBodyEntered(Node body)
+    private void OnBodyEntered(Node body)
     {
         if (body is not Player p)
         {
             return;
         }
         animatedSprite2D.Play("pressed");
-        await Task.Delay(TimeSpan.FromMilliseconds(1000));
         GlobalEvents.ExitAreaReached?.Invoke(this);
-    }
-
-    protected override void Dispose(bool disposing)
-    {
-        BodyEntered -= OnBodyEntered;
     }
 }

@@ -6,6 +6,7 @@
 script = ExtResource("1_5vxmc")
 
 [node name="GameOverScreen" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 
 [node name="Panel" type="Panel" parent="GameOverScreen"]
 custom_minimum_size = Vector2(3.04, 4.88)
