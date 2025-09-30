@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cn0etfp3nggje" path="res://Traps/SpikeBall.tscn" id="5_e1uqi"]
 [ext_resource type="PackedScene" uid="uid://ciqdi55sqykbu" path="res://Objects/JumpPad.tscn" id="6_4ipag"]
 [ext_resource type="PackedScene" uid="uid://bjvf0omexlghy" path="res://Levels/TileMaps/BasicTerrainTileMap.tscn" id="6_olbyf"]
-[ext_resource type="PackedScene" uid="uid://c1wcg7by5j7yt" path="res://Levels/Level1/Background.tscn" id="7_a1y0i"]
-[ext_resource type="PackedScene" uid="uid://7hmjqdqsdfah" path="res://Levels/Level1/StartArea.tscn" id="8_renp8"]
-[ext_resource type="PackedScene" uid="uid://bky8me0xqgdpo" path="res://Levels/Level1/ExitArea.tscn" id="9_b1g7e"]
+[ext_resource type="PackedScene" uid="uid://c1wcg7by5j7yt" path="res://Objects/Background.tscn" id="7_a1y0i"]
+[ext_resource type="PackedScene" uid="uid://7hmjqdqsdfah" path="res://Objects/StartArea.tscn" id="8_renp8"]
+[ext_resource type="PackedScene" uid="uid://bky8me0xqgdpo" path="res://Objects/ExitArea.tscn" id="9_b1g7e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iotdp"]
 size = Vector2(1481, 20)

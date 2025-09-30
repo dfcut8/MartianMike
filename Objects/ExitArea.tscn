@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bky8me0xqgdpo"]
 
-[ext_resource type="Script" uid="uid://6mgtod1ymjqq" path="res://Levels/Level1/ExitArea.cs" id="1_4sbfu"]
+[ext_resource type="Script" uid="uid://6mgtod1ymjqq" path="res://Objects/ExitArea.cs" id="1_4sbfu"]
 [ext_resource type="Texture2D" uid="uid://c2foaokdsaprh" path="res://assets/textures/other/End (Idle).png" id="1_lcfdr"]
 [ext_resource type="Texture2D" uid="uid://dlqq0bm4sby2h" path="res://assets/textures/other/End (Pressed) (64x64).png" id="2_i6ir5"]
 
