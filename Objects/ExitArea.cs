@@ -4,13 +4,15 @@ using System.Threading.Tasks;
 using Godot;
 
 using MartianMike.Actors;
+using MartianMike.Core;
 
 namespace MartianMike.Objects;
 
 public partial class ExitArea : Area2D
 {
-    [Export] private PackedScene NextLevel;
+    [Export] public PackedScene NextLevel { get; private set; }
     private AnimatedSprite2D animatedSprite2D;
+
     public override void _Ready()
     {
         animatedSprite2D = GetNode<AnimatedSprite2D>("%AnimatedSprite2D");
@@ -25,17 +27,8 @@ public partial class ExitArea : Area2D
             return;
         }
         animatedSprite2D.Play("pressed");
-        p.IsActive = false;
         await Task.Delay(TimeSpan.FromMilliseconds(1000));
-        if (NextLevel is not null)
-        {
-            GetTree().ChangeSceneToPacked(NextLevel);
-        }
-        else
-        {
-            GD.Print("Game Over!!!");
-            GetTree().Paused = true;
-        }
+        GlobalEvents.ExitAreaReached?.Invoke(this);
     }
 
     protected override void Dispose(bool disposing)

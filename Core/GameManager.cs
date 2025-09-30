@@ -10,6 +10,7 @@ public partial class GameManager : Node
     [Export] private StartArea startArea;
     private Area2D deathZone;
     private Player player;
+    private CanvasLayer gameOverScreen;
 
     public override void _Ready()
     {
@@ -17,6 +18,9 @@ public partial class GameManager : Node
         player = GetNode<Player>("%Player");
         // startArea = GetNode<StartArea>("%StartArea");
         deathZone = GetNode<Area2D>("%DeathZone");
+        gameOverScreen = GetNode<CanvasLayer>("%GameOverScreen");
+        gameOverScreen.Visible = false;
+        gameOverScreen.ProcessMode = ProcessModeEnum.Disabled;
         deathZone.BodyEntered += body =>
         {
             if (body is Player)
@@ -25,6 +29,7 @@ public partial class GameManager : Node
             }
         };
         GlobalEvents.TrapTriggered += OnTrapTriggered;
+        GlobalEvents.ExitAreaReached += OnExitAreaReached;
 
         // Need this because GameManager is another node and could be ready before StartArea
         startArea.Ready += () =>
@@ -32,6 +37,20 @@ public partial class GameManager : Node
             player.Position = startArea.GetSpawnPosition();
             GD.Print("Player spawned at: " + player.Position);
         };
+    }
+
+    private void OnExitAreaReached(ExitArea exitArea)
+    {
+        if (exitArea.NextLevel is not null)
+        {
+            GetTree().ChangeSceneToPacked(exitArea.NextLevel);
+        }
+        else
+        {
+            gameOverScreen.Visible = true;
+            gameOverScreen.ProcessMode = ProcessModeEnum.WhenPaused;
+            GetTree().Paused = true;
+        }
     }
 
     public override void _Process(double delta)
