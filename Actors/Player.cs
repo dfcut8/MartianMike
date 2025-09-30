@@ -19,11 +19,7 @@ public partial class Player : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         var velocity = Velocity;
-        if (IsActive)
-        {
-            HandlePlayerInputs(ref velocity);
-        }
-
+        HandlePlayerInputs(ref velocity);
         AddGravity(delta, ref velocity);
         Velocity = velocity;
         MoveAndSlide();
@@ -93,7 +89,12 @@ public partial class Player : CharacterBody2D
             Jump(ref v);
         }
 
-        var direction = Input.GetAxis("player_left", "player_right") * speed;
+        var direction = 0f;
+        if (IsActive)
+        {
+            direction = Input.GetAxis("player_left", "player_right") * speed;
+        }
+
         v.X = direction;
         if (direction != 0)
         {
