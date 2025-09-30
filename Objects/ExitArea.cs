@@ -33,7 +33,8 @@ public partial class ExitArea : Area2D
         }
         else
         {
-            GetTree().ChangeSceneToFile("GameOver");
+            GD.Print("Game Over!!!");
+            GetTree().Paused = true;
         }
     }
 
