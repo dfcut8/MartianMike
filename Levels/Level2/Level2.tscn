@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://l7h8efx5m83k"]
+[gd_scene load_steps=10 format=4 uid="uid://l7h8efx5m83k"]
 
 [ext_resource type="PackedScene" uid="uid://c1wcg7by5j7yt" path="res://Objects/Background.tscn" id="1_47c0g"]
 [ext_resource type="PackedScene" uid="uid://b75p6mpxhbrrq" path="res://Core/GameManager.tscn" id="2_vvh1e"]
-[ext_resource type="PackedScene" uid="uid://p83o2uvq00tk" path="res://Traps/Saw.tscn" id="3_0t0mx"]
 [ext_resource type="PackedScene" uid="uid://cn0etfp3nggje" path="res://Traps/SpikeBall.tscn" id="4_m2edo"]
 [ext_resource type="PackedScene" uid="uid://ciqdi55sqykbu" path="res://Objects/JumpPad.tscn" id="5_t7n70"]
 [ext_resource type="PackedScene" uid="uid://bjvf0omexlghy" path="res://Levels/TileMaps/BasicTerrainTileMap.tscn" id="6_12gxv"]
@@ -31,9 +30,6 @@ shape = SubResource("RectangleShape2D_iotdp")
 
 [node name="Traps" type="Node" parent="."]
 
-[node name="Saw" parent="Traps" instance=ExtResource("3_0t0mx")]
-position = Vector2(325, 140)
-
 [node name="SpikeBBall" parent="Traps" instance=ExtResource("4_m2edo")]
 position = Vector2(-67, 146)
 
@@ -53,7 +49,7 @@ unique_name_in_owner = true
 position = Vector2(76, 161)
 
 [node name="ExitArea" parent="." instance=ExtResource("8_1wk87")]
-position = Vector2(566, 160)
+position = Vector2(295, 160)
 
 [node name="Player" parent="." instance=ExtResource("9_ilvd0")]
 unique_name_in_owner = true

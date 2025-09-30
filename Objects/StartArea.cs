@@ -1,5 +1,7 @@
 using Godot;
 
+namespace MartianMike.Objects;
+
 public partial class StartArea : StaticBody2D
 {
     private Marker2D spawnMarker;

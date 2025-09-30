@@ -2,6 +2,8 @@ using Godot;
 
 using MartianMike.Actors;
 
+namespace MartianMike.Objects;
+
 public partial class JumpPad : Area2D
 {
     [Export] private int jumpPadVelocity = -400;

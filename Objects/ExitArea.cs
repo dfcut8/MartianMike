@@ -2,6 +2,8 @@ using Godot;
 
 using MartianMike.Actors;
 
+namespace MartianMike.Objects;
+
 public partial class ExitArea : Area2D
 {
     private AnimatedSprite2D animatedSprite2D;
@@ -14,10 +16,10 @@ public partial class ExitArea : Area2D
 
     private void OnBodyEntered(Node body)
     {
-        if (body is Player)
+        if (body is Player p)
         {
             animatedSprite2D.Play("pressed");
-            (body as Player).IsActive = false;
+            p.IsActive = false;
         }
     }
 
