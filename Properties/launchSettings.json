@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "MartianMike": {
+      "commandName": "Project"
+    },
+    "Run Game": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Applications\\Godot4.Net\\Godot.exe",
+      "workingDirectory": "."
+    }
+  }
+}
