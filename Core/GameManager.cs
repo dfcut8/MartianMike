@@ -18,7 +18,7 @@ public partial class GameManager : Node
     {
         GD.Print("GameManager ready.");
         player = GetNode<Player>("%Player");
-        // startArea = GetNode<StartArea>("%StartArea");
+        startArea = GetNode<StartArea>("%StartArea");
         deathZone = GetNode<Area2D>("%DeathZone");
         gameOverScreen = GetNode<CanvasLayer>("%GameOverScreen");
         gameOverScreen.Visible = false;
