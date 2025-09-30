@@ -14,22 +14,19 @@ public partial class GameManager : Node
     private Area2D deathZone;
     private Player player;
     private CanvasLayer gameOverScreen;
-
-    public override void _EnterTree()
-    {
-        gameOverScreen = GetNode<CanvasLayer>("%GameOverScreen");
-        gameOverScreen.Visible = false;
-        gameOverScreen.ProcessMode = ProcessModeEnum.Disabled;
-
-        GlobalEvents.TrapTriggered += OnTrapTriggered;
-        GlobalEvents.ExitAreaReached += OnExitAreaReached;
-    }
     public override void _Ready()
     {
         GD.Print("GameManager ready.");
         player = GetNode<Player>("%Player");
         // startArea = GetNode<StartArea>("%StartArea");
         deathZone = GetNode<Area2D>("%DeathZone");
+        gameOverScreen = GetNode<CanvasLayer>("%GameOverScreen");
+        gameOverScreen.Visible = false;
+        gameOverScreen.ProcessMode = ProcessModeEnum.Disabled;
+
+        GlobalEvents.TrapTriggered += OnTrapTriggered;
+        GlobalEvents.ExitAreaReached += OnExitAreaReached;
+
         deathZone.BodyEntered += body =>
         {
             if (body is Player)
