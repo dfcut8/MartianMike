@@ -9,6 +9,7 @@ public partial class Player : CharacterBody2D
     [Export] private int jumpVelocity = -200;
     private AnimatedSprite2D animatedSprite2D;
 
+    public bool IsActive { get; set; } = true;
 
     public override void _Ready()
     {
@@ -18,7 +19,11 @@ public partial class Player : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         var velocity = Velocity;
-        HandlePlayerInputs(ref velocity);
+        if (IsActive)
+        {
+            HandlePlayerInputs(ref velocity);
+        }
+
         AddGravity(delta, ref velocity);
         Velocity = velocity;
         MoveAndSlide();

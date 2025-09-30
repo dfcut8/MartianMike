@@ -17,6 +17,7 @@ public partial class ExitArea : Area2D
         if (body is Player)
         {
             animatedSprite2D.Play("pressed");
+            (body as Player).IsActive = false;
         }
     }
 
