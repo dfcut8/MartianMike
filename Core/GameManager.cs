@@ -1,10 +1,8 @@
-using System;
-using System.Threading.Tasks;
-
 using Godot;
-
 using MartianMike.Actors;
 using MartianMike.Objects;
+using System;
+using System.Threading.Tasks;
 
 namespace MartianMike.Core;
 
@@ -23,6 +21,15 @@ public partial class GameManager : Node
         gameOverScreen = GetNode<CanvasLayer>("%GameOverScreen");
         gameOverScreen.Visible = false;
         gameOverScreen.ProcessMode = ProcessModeEnum.Disabled;
+        gameOverScreen.GetNode<Button>("%TryAgain").Pressed += () =>
+        {
+            GetTree().ReloadCurrentScene();
+            GetTree().Paused = false;
+        };
+        gameOverScreen.GetNode<Button>("%Quit").Pressed += () =>
+        {
+            GetTree().Quit();
+        };
 
         GlobalEvents.TrapTriggered += OnTrapTriggered;
         GlobalEvents.ExitAreaReached += OnExitAreaReached;
