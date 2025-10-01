@@ -7,6 +7,7 @@ public partial class Main : Control
 
     public override void _Ready()
     {
+        GetTree().Paused = false;
         startButton = GetNode<Button>("%Start");
         exitButton = GetNode<Button>("%Exit");
 

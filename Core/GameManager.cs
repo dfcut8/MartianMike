@@ -14,6 +14,7 @@ public partial class GameManager : Node
     private CanvasLayer gameOverScreen;
     public override void _Ready()
     {
+        GetTree().Paused = false;
         GD.Print("GameManager ready.");
         player = GetNode<Player>("%Player");
         startArea = GetNode<StartArea>("%StartArea");
@@ -23,12 +24,11 @@ public partial class GameManager : Node
         gameOverScreen.ProcessMode = ProcessModeEnum.Disabled;
         gameOverScreen.GetNode<Button>("%TryAgain").Pressed += () =>
         {
-            GetTree().ReloadCurrentScene();
-            GetTree().Paused = false;
+            GetTree().ChangeSceneToFile("res://Levels/Level1/Level1.tscn");
         };
-        gameOverScreen.GetNode<Button>("%Quit").Pressed += () =>
+        gameOverScreen.GetNode<Button>("%MainMenu").Pressed += () =>
         {
-            GetTree().Quit();
+            GetTree().ChangeSceneToFile("res://Main.tscn");
         };
 
         GlobalEvents.TrapTriggered += OnTrapTriggered;
