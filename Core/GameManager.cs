@@ -13,7 +13,8 @@ public partial class GameManager : Node
     private Area2D deathZone;
     private Player player;
     private CanvasLayer gameOverScreen;
-    private Hud Hud;
+    private Hud hud;
+    private Timer levelTimer;
 
     public override void _Ready()
     {
@@ -52,7 +53,21 @@ public partial class GameManager : Node
             GD.Print("Player spawned at: " + player.Position);
         };
 
-        Hud = GetNode<Hud>("%Hud");
+        hud = GetNode<Hud>("%Hud");
+        levelTimer = GetNode<Timer>("%LevelTimer");
+        levelTimer.Timeout += OnLevelTimerTimeout;
+    }
+
+    private void OnLevelTimerTimeout()
+    {
+        ShowGameOverScreen();
+    }
+
+    private void ShowGameOverScreen()
+    {
+        gameOverScreen.Visible = true;
+        gameOverScreen.ProcessMode = ProcessModeEnum.WhenPaused;
+        GetTree().Paused = true;
     }
 
     private async void OnExitAreaReached(ExitArea exitArea)
@@ -65,9 +80,7 @@ public partial class GameManager : Node
         }
         else
         {
-            gameOverScreen.Visible = true;
-            gameOverScreen.ProcessMode = ProcessModeEnum.WhenPaused;
-            GetTree().Paused = true;
+            ShowGameOverScreen();
         }
     }
 
