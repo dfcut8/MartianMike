@@ -1,5 +1,6 @@
 using Godot;
 using MartianMike.Core;
+using System;
 
 namespace MartianMike.Ui;
 
@@ -29,11 +30,12 @@ public partial class Hud : Control
     {
         if (levelTimer is null)
         {
-            return "00:00";
+            return "00:00.000";
         }
-        int totalSeconds = (int)levelTimer.TimeLeft;
-        int minutes = totalSeconds / 60;
-        int seconds = totalSeconds % 60;
-        return $"{minutes:D2}:{seconds:D2}";
+        double timeLeft = levelTimer.TimeLeft;
+        int minutes = (int)(timeLeft / 60);
+        int seconds = (int)(timeLeft % 60);
+        int milliseconds = (int)((timeLeft - Math.Floor(timeLeft)) * 1000);
+        return $"{minutes:D2}:{seconds:D2}.{milliseconds:D3}";
     }
 }

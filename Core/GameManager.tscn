@@ -6,6 +6,13 @@
 [node name="GameManager" type="Node"]
 script = ExtResource("1_5vxmc")
 
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+
+[node name="Hud" parent="HUDLayer" node_paths=PackedStringArray("gameManager") instance=ExtResource("2_5k1yx")]
+unique_name_in_owner = true
+offset_bottom = -194.0
+gameManager = NodePath("../..")
+
 [node name="GameOverScreen" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
@@ -59,14 +66,8 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "MAIN MENU"
 
-[node name="HUDLayer" type="CanvasLayer" parent="."]
-
-[node name="Hud" parent="HUDLayer" node_paths=PackedStringArray("gameManager") instance=ExtResource("2_5k1yx")]
-unique_name_in_owner = true
-offset_bottom = -194.0
-gameManager = NodePath("../..")
-
 [node name="LevelTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 15.0
 one_shot = true
 autostart = true
