@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b75p6mpxhbrrq"]
+[gd_scene load_steps=5 format=3 uid="uid://b75p6mpxhbrrq"]
 
 [ext_resource type="Script" uid="uid://ci78ki3e2dlpa" path="res://Core/GameManager.cs" id="1_5vxmc"]
 [ext_resource type="PackedScene" uid="uid://cmj204s1gya60" path="res://Ui/Hud.tscn" id="2_5k1yx"]
+[ext_resource type="PackedScene" uid="uid://btprf6ltl2kgn" path="res://Ui/GameOverScreen.tscn" id="3_xeqsm"]
+[ext_resource type="PackedScene" uid="uid://7i7i3hijcpuc" path="res://Ui/WinScreen.tscn" id="4_enbb4"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_5vxmc")
@@ -13,61 +15,15 @@ unique_name_in_owner = true
 offset_bottom = -194.0
 gameManager = NodePath("../..")
 
-[node name="GameOverScreen" type="CanvasLayer" parent="."]
+[node name="GameOverScreen" parent="." instance=ExtResource("3_xeqsm")]
 unique_name_in_owner = true
+visible = false
 
-[node name="Panel" type="Panel" parent="GameOverScreen"]
-custom_minimum_size = Vector2(3.04, 4.88)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -71.5
-offset_top = -62.5
-offset_right = 71.5
-offset_bottom = 62.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Label" type="Label" parent="GameOverScreen/Panel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -46.0
-offset_right = 46.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "GAME OVER"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -52.0
-offset_top = -26.845001
-offset_right = 52.0
-offset_bottom = 42.655
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TryAgain" type="Button" parent="GameOverScreen/Panel/VBoxContainer"]
+[node name="WinScreen" parent="." instance=ExtResource("4_enbb4")]
 unique_name_in_owner = true
-layout_mode = 2
-text = "TRY AGAIN"
-
-[node name="MainMenu" type="Button" parent="GameOverScreen/Panel/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "MAIN MENU"
 
 [node name="LevelTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 15.0
+wait_time = 5.0
 one_shot = true
 autostart = true

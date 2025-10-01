@@ -1,9 +1,11 @@
+using System;
+using System.Threading.Tasks;
+
 using Godot;
+
 using MartianMike.Actors;
 using MartianMike.Objects;
 using MartianMike.Ui;
-using System;
-using System.Threading.Tasks;
 
 namespace MartianMike.Core;
 
@@ -13,6 +15,7 @@ public partial class GameManager : Node
     private Area2D deathZone;
     private Player player;
     private CanvasLayer gameOverScreen;
+    private CanvasLayer winScreen;
     private Hud hud;
     private Timer levelTimer;
 
@@ -56,17 +59,21 @@ public partial class GameManager : Node
         hud = GetNode<Hud>("%Hud");
         levelTimer = GetNode<Timer>("%LevelTimer");
         levelTimer.Timeout += OnLevelTimerTimeout;
+
+        winScreen = GetNode<CanvasLayer>("%WinScreen");
+        winScreen.Visible = false;
+        winScreen.ProcessMode = ProcessModeEnum.Disabled;
     }
 
     private void OnLevelTimerTimeout()
     {
-        ShowGameOverScreen();
+        ShowScreen(gameOverScreen);
     }
 
-    private void ShowGameOverScreen()
+    private void ShowScreen(CanvasLayer screen)
     {
-        gameOverScreen.Visible = true;
-        gameOverScreen.ProcessMode = ProcessModeEnum.WhenPaused;
+        screen.Visible = true;
+        screen.ProcessMode = ProcessModeEnum.WhenPaused;
         GetTree().Paused = true;
     }
 
@@ -81,7 +88,7 @@ public partial class GameManager : Node
         }
         else
         {
-            ShowGameOverScreen();
+            ShowScreen(winScreen);
         }
     }
 
