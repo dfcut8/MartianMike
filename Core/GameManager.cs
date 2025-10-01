@@ -73,6 +73,7 @@ public partial class GameManager : Node
     private async void OnExitAreaReached(ExitArea exitArea)
     {
         player.IsActive = false;
+        levelTimer.Paused = true;
         await Task.Delay(TimeSpan.FromMilliseconds(1000));
         if (exitArea.NextLevel is not null)
         {

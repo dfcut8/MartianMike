@@ -35,7 +35,7 @@ public partial class Hud : Control
         double timeLeft = levelTimer.TimeLeft;
         int minutes = (int)(timeLeft / 60);
         int seconds = (int)(timeLeft % 60);
-        int milliseconds = (int)((timeLeft - Math.Floor(timeLeft)) * 1000);
-        return $"{minutes:D2}:{seconds:D2}.{milliseconds:D3}";
+        int milliseconds = (int)((timeLeft - Math.Floor(timeLeft)) * 100);
+        return $"{minutes:D2}:{seconds:D2}.{milliseconds:D2}";
     }
 }
