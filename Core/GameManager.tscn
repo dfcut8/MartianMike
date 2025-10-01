@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b75p6mpxhbrrq"]
+[gd_scene load_steps=3 format=3 uid="uid://b75p6mpxhbrrq"]
 
 [ext_resource type="Script" uid="uid://ci78ki3e2dlpa" path="res://Core/GameManager.cs" id="1_5vxmc"]
+[ext_resource type="PackedScene" uid="uid://cmj204s1gya60" path="res://Ui/Hud.tscn" id="2_5k1yx"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_5vxmc")
@@ -57,3 +58,7 @@ text = "TRY AGAIN"
 unique_name_in_owner = true
 layout_mode = 2
 text = "MAIN MENU"
+
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="HUDLayer" instance=ExtResource("2_5k1yx")]
