@@ -1,6 +1,7 @@
 using Godot;
 using MartianMike.Actors;
 using MartianMike.Objects;
+using MartianMike.Ui;
 using System;
 using System.Threading.Tasks;
 
@@ -12,6 +13,8 @@ public partial class GameManager : Node
     private Area2D deathZone;
     private Player player;
     private CanvasLayer gameOverScreen;
+    private Hud Hud;
+
     public override void _Ready()
     {
         GetTree().Paused = false;
@@ -48,6 +51,8 @@ public partial class GameManager : Node
             player.Position = startArea.GetSpawnPosition();
             GD.Print("Player spawned at: " + player.Position);
         };
+
+        Hud = GetNode<Hud>("%Hud");
     }
 
     private async void OnExitAreaReached(ExitArea exitArea)

@@ -8,6 +8,7 @@ public partial class Hud : Control
     [Export] private GameManager gameManager;
 
     private Timer levelTimer;
+    private Label timerLabel;
 
     override public void _Ready()
     {
@@ -16,11 +17,12 @@ public partial class Hud : Control
             GD.PrintErr("GameManager is not assigned in the Hud.");
         }
         levelTimer = gameManager.GetNode<Timer>("%LevelTimer");
+        timerLabel = GetNode<Label>("%TimerLabel");
     }
 
     override public void _Process(double delta)
     {
-        GetNode<Label>("%TimeLabel").Text = GetFormattedTime();
+        timerLabel.Text = GetFormattedTime();
     }
 
     public string GetFormattedTime()
