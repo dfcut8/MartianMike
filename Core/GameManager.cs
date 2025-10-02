@@ -46,6 +46,7 @@ public partial class GameManager : Node
             if (body is Player)
             {
                 player.Position = startArea.GetSpawnPosition();
+                GetTree().ChangeSceneToFile("res://Levels/")
             }
         };
 
