@@ -1,11 +1,9 @@
-using System;
-using System.Threading.Tasks;
-
 using Godot;
-
 using MartianMike.Actors;
 using MartianMike.Objects;
 using MartianMike.Ui;
+using System;
+using System.Threading.Tasks;
 
 namespace MartianMike.Core;
 
@@ -46,7 +44,6 @@ public partial class GameManager : Node
             if (body is Player)
             {
                 player.Position = startArea.GetSpawnPosition();
-                GetTree().ChangeSceneToFile("res://Levels/")
             }
         };
 
