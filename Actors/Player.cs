@@ -63,6 +63,7 @@ public partial class Player : CharacterBody2D
     {
         velocity.Y = customJumpVelocity;
         animatedSprite2D.Play("jump");
+        AudioManager.Instance.PlaySoundEffect(jumpSoundEffect);
         Velocity = velocity;
     }
 

@@ -10,6 +10,7 @@ namespace MartianMike.Core;
 public partial class GameManager : Node
 {
     [Export] private StartArea startArea;
+    [Export] private AudioStream trapSfx;
     private Area2D deathZone;
     private Player player;
     private CanvasLayer gameOverScreen;
@@ -104,8 +105,14 @@ public partial class GameManager : Node
         }
     }
 
-    private void OnTrapTriggered()
+    private async void OnTrapTriggered()
     {
+        AudioManager.Instance.PlaySoundEffect(trapSfx);
+        player.Visible = false;
+        player.IsActive = false;
+        await Task.Delay(TimeSpan.FromMilliseconds(1500));
+        player.Visible = true;
+        player.IsActive = true;
         player.Position = startArea.GetSpawnPosition();
     }
 

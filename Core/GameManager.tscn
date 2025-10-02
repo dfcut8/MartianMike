@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b75p6mpxhbrrq"]
+[gd_scene load_steps=6 format=3 uid="uid://b75p6mpxhbrrq"]
 
 [ext_resource type="Script" uid="uid://ci78ki3e2dlpa" path="res://Core/GameManager.cs" id="1_5vxmc"]
 [ext_resource type="PackedScene" uid="uid://cmj204s1gya60" path="res://Ui/Hud.tscn" id="2_5k1yx"]
+[ext_resource type="AudioStream" uid="uid://djqbqwdbj0gbc" path="res://assets/audio/hurt.wav" id="2_vpi45"]
 [ext_resource type="PackedScene" uid="uid://btprf6ltl2kgn" path="res://Ui/GameOverScreen.tscn" id="3_xeqsm"]
 [ext_resource type="PackedScene" uid="uid://7i7i3hijcpuc" path="res://Ui/WinScreen.tscn" id="4_enbb4"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_5vxmc")
+trapSfx = ExtResource("2_vpi45")
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 
