@@ -7,6 +7,7 @@ public partial class AudioManager : Node
     public override void _Ready()
     {
         backgroundMusicPlayer = GetNode<AudioStreamPlayer>("%BackgroundMusicPlayer");
+        backgroundMusicPlayer.ProcessMode = ProcessModeEnum.Always;
 
         // TODO: Make volume adjustable in settings menu
         backgroundMusicPlayer.VolumeDb = -10;
