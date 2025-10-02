@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://djwt6jb5c2sxw"]
+[gd_scene load_steps=3 format=3 uid="uid://djwt6jb5c2sxw"]
 
+[ext_resource type="Script" uid="uid://fsrrvq48x12a" path="res://Audio/AudioManager.cs" id="1_4apyq"]
 [ext_resource type="AudioStream" uid="uid://cawqagp6qffuj" path="res://assets/audio/8Bit - Lavender Loop.wav" id="1_l0aok"]
 
 [node name="AudioManager" type="Node"]
+script = ExtResource("1_4apyq")
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 stream = ExtResource("1_l0aok")
