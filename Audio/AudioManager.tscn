@@ -9,3 +9,6 @@ script = ExtResource("1_4apyq")
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("1_l0aok")
+
+[node name="SoundEffectPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true

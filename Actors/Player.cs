@@ -7,6 +7,7 @@ public partial class Player : CharacterBody2D
     [Export] private int gravity = 400;
     [Export] private int speed = 150;
     [Export] private int jumpVelocity = -200;
+    [Export] private AudioStream jumpSoundEffect;
     private AnimatedSprite2D animatedSprite2D;
 
     public bool IsActive { get; set; } = true;
@@ -49,6 +50,7 @@ public partial class Player : CharacterBody2D
     {
         velocity.Y = jumpVelocity;
         animatedSprite2D.Play("jump");
+        AudioManager.Instance.PlaySoundEffect(jumpSoundEffect);
         Velocity = velocity;
     }
 
